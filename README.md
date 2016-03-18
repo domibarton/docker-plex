@@ -1,6 +1,6 @@
 ## About
 
-This is a Docker image for the [Plex Media Server](http://plex.tv/).
+This is a Docker image for the [Plex Media Server](http://plex.tv/) and it's based on the [Plex Pass channel](https://plex.tv/downloads?channel=plexpass).
 
 The Docker image currently supports:
 
@@ -38,6 +38,7 @@ plex:
     volumes:
         - "<config path>:/config"
         - "<media path>:/media"
+        - "<transcode path>:/transcode"
     ports:
         - "32400:32400"
     restart: always
