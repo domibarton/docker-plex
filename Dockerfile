@@ -43,7 +43,7 @@ RUN chmod 644 /etc/default/plexmediaserver
 
 VOLUME ["/config", "/transcode", "/media"]
 
-EXPOSE 8081
+EXPOSE 32400
 
 #
 # Start Plex Media Server.
