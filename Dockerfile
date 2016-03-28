@@ -19,7 +19,7 @@ RUN chmod 755 /plex.sh
 # Install Plex and all required dependencies.
 #
 
-RUN export VERSION=0.9.16.2.1827-df572f6 \
+RUN export VERSION=0.9.16.3.1840-cece46d \
     && apt-get -q update \
     && apt-get install -qy curl gdebi-core \
     && curl -o /tmp/plexmediaserver_amd64.deb https://downloads.plex.tv/plex-media-server/${VERSION}/plexmediaserver_${VERSION}_amd64.deb \
