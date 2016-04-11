@@ -37,4 +37,4 @@ echo "[DONE]"
 #
 
 echo "Starting Plex..."
-exec su -pc "/usr/sbin/start_pms" ${USER}
+exec sudo -u ${USER} /usr/sbin/start_pms

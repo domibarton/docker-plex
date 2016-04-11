@@ -9,19 +9,12 @@ RUN groupadd -r -g 666 plex \
     && useradd -r -u 666 -g 666 plex
 
 #
-# Add Plex init script.
-#
-
-ADD plex.sh /plex.sh
-RUN chmod 755 /plex.sh
-
-#
 # Install Plex and all required dependencies.
 #
 
 RUN export VERSION=0.9.16.4.1911-ee6e505 \
     && apt-get -q update \
-    && apt-get install -qy curl gdebi-core \
+    && apt-get install -qy sudo curl gdebi-core \
     && curl -o /tmp/plexmediaserver_amd64.deb https://downloads.plex.tv/plex-media-server/${VERSION}/plexmediaserver_${VERSION}_amd64.deb \
     && gdebi -n /tmp/plexmediaserver_amd64.deb \
     && apt-get -y remove curl gdebi-core \
@@ -31,11 +24,17 @@ RUN export VERSION=0.9.16.4.1911-ee6e505 \
     && rm -rf /tmp/*
 
 #
-# Add plex defaults.
+# Add required files for plex.
 #
+
+ADD plex.sh /plex.sh
+RUN chmod 755 /plex.sh
 
 ADD default /etc/default/plexmediaserver
 RUN chmod 644 /etc/default/plexmediaserver
+
+ADD init.override /etc/init/plexmediaserver.override
+RUN chmod 644 /etc/init/plexmediaserver.override
 
 #
 # Define container settings.
