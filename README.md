@@ -1,6 +1,6 @@
 ## About
 
-This is a Docker image for the [Plex Media Server](http://plex.tv/) and it's based on the [Plex Pass channel](https://plex.tv/downloads?channel=plexpass).
+This is a Docker image for the [Plex Media Server](http://plex.tv/) and it's based on the [Plex Pass channel](https://www.plex.tv/downloads/).
 
 The Docker image currently supports:
 
