@@ -33,8 +33,31 @@ chown -R ${USER}: /config /transcode
 echo "[DONE]"
 
 #
+# Setup trap for SIGTERM
+#
+
+function stop
+{
+    source /etc/default/plexmediaserver
+    PIDFILE="${PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR}/Plex Media Server/plexmediaserver.pid"
+
+    printf "Stopping Plex Media Server by PID..."
+    kill $(cat "${PIDFILE}")
+    echo "[DONE]"
+
+    printf "Removing PID file..."
+    rm -f "${PIDFILE}"
+    echo "[DONE]"
+
+    echo "Exiting..."
+    exit 0
+}
+
+trap stop 0
+
+#
 # Finally, start Plex.
 #
 
 echo "Starting Plex..."
-exec sudo -u ${USER} /usr/sbin/start_pms
+su -pc "/usr/sbin/start_pms" ${USER}
