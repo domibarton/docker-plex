@@ -12,7 +12,7 @@ RUN groupadd -r -g 666 plex \
 # Install Plex and all required dependencies.
 #
 
-RUN export VERSION=1.6.0.3698-7fe404e94 \
+RUN export VERSION=1.6.1.3722-4955e31cf \
     && apt-get -q update \
     && apt-get install -qy curl gdebi-core \
     && curl -o /tmp/plexmediaserver_amd64.deb https://downloads.plex.tv/plex-media-server/${VERSION}/plexmediaserver_${VERSION}_amd64.deb \
