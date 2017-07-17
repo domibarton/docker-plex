@@ -15,6 +15,7 @@ RUN groupadd -r -g 666 plex \
 RUN export VERSION=1.7.6.4058-8fa494d15 \
     && apt-get -q update \
     && apt-get install -qy curl gdebi-core \
+    && apt-get remove -qy udev \
     && curl -o /tmp/plexmediaserver_amd64.deb https://downloads.plex.tv/plex-media-server/${VERSION}/plexmediaserver_${VERSION}_amd64.deb \
     && gdebi -n /tmp/plexmediaserver_amd64.deb \
     && apt-get -y remove curl gdebi-core \
