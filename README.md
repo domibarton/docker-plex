@@ -63,3 +63,8 @@ If you want to run Plex with different ID's you've to set the `PLEX_UID` and/or 
 PLEX_UID=1234
 PLEX_GID=1234
 ```
+
+### Chown files
+
+By default Plex won't change the permissions & owner of the files under `/config` and `/transcode`.  
+However, the Plex container can change the owner of all files in `/config` and `/transcode` if you set the `PLEX_CHOWN` variable to `YES`.
