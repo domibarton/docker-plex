@@ -10,9 +10,10 @@ USER="plex"
 echo "Plex settings"
 echo "============="
 echo
-echo "  User:       ${USER}"
-echo "  UID:        ${PLEX_UID:=666}"
-echo "  GID:        ${PLEX_GID:=666}"
+echo "  User:           ${USER}"
+echo "  UID:            ${PLEX_UID:=666}"
+echo "  GID:            ${PLEX_GID:=666}"
+echo "  Chown files:    ${PLEX_CHOWN:=no}"
 echo
 
 #
@@ -29,8 +30,13 @@ echo "[DONE]"
 #
 
 printf "Set permissions... "
-chown -R ${USER}: /config /transcode
-echo "[DONE]"
+if [[ "${PLEX_CHOWN^^}" == "YES" ]]
+then
+    chown -R ${USER}: /config /transcode
+    echo "[DONE]"
+else
+    echo "[SKIP]"
+fi
 
 #
 # Setup trap for SIGTERM
