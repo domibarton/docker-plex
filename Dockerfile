@@ -12,7 +12,7 @@ RUN groupadd -r -g 666 plex \
 # Install Plex and all required dependencies.
 #
 
-RUN export VERSION=1.16.1.1291-158e5b199 \
+RUN export VERSION=1.16.2.1297-4b7ace214 \
     && apt-get -q update \
     && apt-get install -qy curl gdebi-core \
     && apt-get remove -qy udev \
